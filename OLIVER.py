@@ -20,7 +20,7 @@ def sheets_request(list):
     return new_list
 
 
-
+# 自己检查文件路径是否正确
 excel_file = "C:\\Users\\NUC Accounting\\Desktop\\Product\\Product_lIST.xlsm"
 
 excel = pd.ExcelFile(excel_file)
@@ -57,7 +57,10 @@ for i in range(len(sheet_name)):
         final_report = need_to_apply
     else:
         final_report = pd.concat([final_report,need_to_apply])
+        
+    print(f"{sheet_name[i]} DONE")
 
 final_report.reset_index(drop=True)
 
+# 文件输出路径
 final_report.to_csv("C:\\Users\\NUC Accounting\\Desktop\\Product\\invoice_request.csv")
